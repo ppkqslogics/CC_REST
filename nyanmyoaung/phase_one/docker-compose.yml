@@ -1,0 +1,16 @@
+#docker-compose version
+version: "3.7"
+
+services:
+  web:
+    #build: .
+    #chitchats->14 / ccsecond->16
+    image: qslogic17/ccapi:17
+    entrypoint: /usr/local/bin/init.sh
+    ports:
+      - 8000:8000
+    #chitchats->.env.dev / ccsecond->.env.ccsecond
+    # env_file:
+    #   - ./.env.ccsecond
+    volumes:
+      - .:/code
