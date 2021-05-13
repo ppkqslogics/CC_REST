@@ -7,7 +7,8 @@ urlpatterns = [
     path('add_friend/', login_required(views.FriendRequestView.as_view(), login_url = 'another'), name="friend_profile"),
     path('confirm_friend/', login_required(views.ConfirmFriendView.as_view(), login_url = 'another'), name="confirm_friend"),
     path('friend_request/<user_id>/', login_required(views.ReceiverView.as_view(), login_url = 'another'), name="friend_request"),
-    path('friend_list/<user_id>/', login_required(views.FriendListView.as_view(), login_url = 'another'), name="friend_list"),
+    path('friend_list/<user_id>/', (views.FriendListView.as_view()), name="friend_list"),
+    # path('friend_list/<user_id>/', login_required(views.FriendListView.as_view(), login_url = 'another'), name="friend_list"),
     
     # Tag
     path('add_tag/', login_required(views.TagsView.as_view(), login_url = 'another'), name="add_tag"),

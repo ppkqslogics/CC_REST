@@ -3,7 +3,8 @@ from . import views
 from django.contrib.auth.decorators import login_required 
 
 urlpatterns = [
-    path('profile/<user_id>/', login_required(views.UserProfileView.as_view(), login_url = 'another'), name="profile"),
+    path('profile/<user_id>/', (views.UserProfileView.as_view()), name="profile"),
+#     path('profile/<user_id>/', login_required(views.UserProfileView.as_view(), login_url = 'another'), name="profile"),
     path('friend_profile/<user_id>/',
          login_required(views.FriendProfileView.as_view(), login_url = 'another'), name="friend_profile"),
     path('stranger_profile/<user_id>/',

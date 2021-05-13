@@ -393,7 +393,7 @@ class FriendListView(APIView):
     INPUT : user_id with get method \n
     OUTPUT/RETURN : Lists of friends with message
     """
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def get(self, request, user_id):
         try:
             contact_obj = Contact.objects.get(user=user_id)

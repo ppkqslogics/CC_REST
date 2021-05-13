@@ -29,7 +29,7 @@ class UserProfileView(APIView):
     URL : /profile/<user_id>/ \n
     METHOD : GET
     """
-    permission_classes = [IsAuthenticated,]
+    # permission_classes = [IsAuthenticated,]
     def get(self, request, user_id):
         try:
             self_profile = Profile.objects.get(user_id=user_id)
