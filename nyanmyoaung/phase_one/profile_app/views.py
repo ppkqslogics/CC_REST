@@ -59,7 +59,7 @@ class FriendProfileView(APIView):
     URL : \n
     METHOD : 
     """
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def get(self, request, user_id):
         try:
             profile = Profile.objects.get(user_id=user_id)
@@ -83,7 +83,7 @@ class StrangerProfileView(APIView):
     Response : Message + serialized data \n
     Note: **Need to Confirm Responser"
     '''
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def get(self, request, user_id):
         try:
             profile = Profile.objects.get(user_id=user_id)
@@ -98,7 +98,7 @@ class StrangerProfileView(APIView):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated,])
+# @permission_classes([IsAuthenticated,])
 def update_cover_photo(request):
     try:
         if request.method == 'POST':
@@ -124,7 +124,7 @@ def update_cover_photo(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated,])
+# @permission_classes([IsAuthenticated,])
 def update_name(request):
     try:
         if request.method == 'POST':
@@ -149,7 +149,7 @@ def update_name(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated,])
+# @permission_classes([IsAuthenticated,])
 def update_photo(request):
     try:
         if request.method == 'POST':
@@ -182,7 +182,7 @@ def update_photo(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated,])
+# @permission_classes([IsAuthenticated,])
 def update_region(request):
     try:
         user = User.objects.get(id=request.data['user_id'])
@@ -206,7 +206,7 @@ def update_region(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated,])
+# @permission_classes([IsAuthenticated,])
 def update_birthday(request):
     try:
         user_profile = Profile.objects.get(user_id=request.data['user_id'])
@@ -231,7 +231,7 @@ def update_birthday(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated,])
+# @permission_classes([IsAuthenticated,])
 def update_gender(request):
     try:
         user = User.objects.get(id=request.data['user_id'])
@@ -254,7 +254,7 @@ def update_gender(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated,])
+# @permission_classes([IsAuthenticated,])
 def testapi(request):
     try:
         if request.method == 'POST':

@@ -23,7 +23,7 @@ class FriendRequestView(APIView):
     SUB_FUNC : firebase_noti
     OUTPUT/RES : message with serializer data
     """
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def post(self, request):
         fail_content = {
             "isSuccessful": False,
@@ -92,7 +92,7 @@ class ReceiverView(APIView):
     OUTPUT : Lists of friends request
     RETURN : Response message with lists of friends
     """
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def get(self, request, user_id):
         try:
             req_user = Relationship.objects.filter(
@@ -130,7 +130,7 @@ class ConfirmFriendView(APIView):
     OUTPUT : add friend to both user with confirmed status
     RETURN : response message
     """
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def post(self, request):
         try:
             sender = request.data['sender']
@@ -204,7 +204,7 @@ class FindFriendView(APIView):
     INPUT : user_id, find_friend(phone (+95. or 09. or 9.) or chitchat id)\n
     OUTPUT : if found, friend profile with message or not, fail message
     '''
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def post(self, request):
         fail_content = {
             'isSuccessful': False,
@@ -299,7 +299,7 @@ class ContactUpload(APIView):
     INPUT : user_id, contact (ph, ph, ph,)
     OUTPUT : chit chat user list with friend or not
     """
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def post(self, request):
         fail_content = {
             "isSuccessful": False,
@@ -425,7 +425,7 @@ class FriendListView(APIView):
 
 
 class EditContact(APIView):
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def post(self, request):
         try:
             user_obj = Contact.objects.get(user=request.data['user_id'])
@@ -459,7 +459,7 @@ class DeleteContact(APIView):
     MODEL_USE : Relationship, User.Contact
     OUTPUT\RES : message 
     """
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def post(self, request):
         try:
             user_obj = User.objects.get(id=request.data['user_id'])
@@ -511,7 +511,7 @@ def remove_friend(user_obj, friend_obj):
 
 
 class EditContactTag(APIView):
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def get(self, request, user_id, friend_id):
         fail_content = {
             'isSuccessful': False,
@@ -554,7 +554,7 @@ class EditContactTag(APIView):
 
 
 class EditContactAllTags(APIView):
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def get(self, request, user_id, friend_id):
         try:
             contact_obj = Contact.objects.get(user_id=user_id)
@@ -589,7 +589,7 @@ class EditContactAddTag(APIView):
     METHOD : POST
     SUB FUNC : add_remove_tag(contact_obj, fri_obj, list_obj)
     """
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def post(self, request):
         success_content = {
             'isSuccessful': True,
@@ -689,7 +689,7 @@ class TagsView(APIView):
     MODEL : User, Contact, TagsModel
     SERIALIZER : TagsModelSerializer
     """
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def post(self, request):
         try:
             user = User.objects.get(id=request.data['user_id'])
@@ -805,7 +805,7 @@ class TagDeleteView(APIView):
     URL : /delete_tag/ \n
     METHOD : POST
     """
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def post(self, request):
         try:
             user_id = request.data['user_id']
@@ -846,7 +846,7 @@ class TagsListView(APIView):
     URL : /tag_list/<user_id>/ \n
     METHOD : GET
     """
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def get(self, request, user_id):
         try:
             contact_obj = Contact.objects.get(user_id=user_id)
@@ -879,7 +879,7 @@ class FriendBlockView(APIView):
     URL : /block_friend/ \n
     METHOD : POST
     """
-    permission_classes = [IsAuthenticated,]
+    #permission_classes = [IsAuthenticated,]
     def post(self, request):
         try:
             user_id = request.data['user_id']
